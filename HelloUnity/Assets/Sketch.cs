@@ -30,23 +30,7 @@ public class Sketch : MonoBehaviour
         int i = 0;
         int j = 0;
         
-        
-
-        //for (int i = 0; i < totalCubes; i++)
-        //{
-            /*float perc = i / (float)totalCubes;
-
-            float x = perc * totalDistance;
-            float y = 5.0f;
-            float z = 0.0f;
-
-            var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
-            newCube.GetComponent<CubeScript>().setSize(1.0f - perc);
-            newCube.GetComponent<CubeScript>().rotateSpeed = perc;*/
-        //}
-
-
-        //----------------------
+      
 
         //We can now loop through the array of objects and access each object individually
         foreach (Product product in products)
@@ -54,10 +38,7 @@ public class Sketch : MonoBehaviour
             //Example of how to use the object
             Debug.Log("This products name is: " + product.ProductName);
             //----------------------
-            //YOUR CODE TO INSTANTIATE NEW PREFABS GOES HERE
-            /*float perc = i / (float)totalCubes;
-
-            float x = perc * totalDistance;*/
+           
             float perc = 0.0f;
             float x = -5.0f;
             float y = 5.0f;
@@ -85,19 +66,13 @@ public class Sketch : MonoBehaviour
             }
 
             var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
-            //newCube.GetComponent<CubeScript>().setSize(1.0f - perc);
+            
             newCube.GetComponent<CubeScript>().setSize(.5f);
-            //newCube.GetComponent<CubeScript>().rotateSpeed = perc;
             newCube.GetComponent<CubeScript>().rotateSpeed = -.25f;
             newCube.GetComponentInChildren<TextMesh>().text = product.ProductName;
-            //newCube.GetComponentInChildren<TextMesh>().transform.localPosition = new Vector3(x, y-3, z);
             newCube.GetComponent<Renderer>().material.color = colour;
 
-           
 
-            //i++;
-
-            //----------------------
         }
     }
 
