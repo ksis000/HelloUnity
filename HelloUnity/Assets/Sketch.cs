@@ -71,7 +71,7 @@ public class Sketch : MonoBehaviour
                 perc = j / (float)totalCubes;
                 x = perc * totalDistance;
                 x = x - 4;
-                y = 8.0f - (float)(j*.5);
+                y = 8.0f - (float)(j*.35);
                 colour = Color.green;
                 j++;
             } else if (product.Manufacturer == "Fama")
@@ -79,14 +79,16 @@ public class Sketch : MonoBehaviour
                 perc = i / (float)totalCubes;
                 x = perc * totalDistance;
                 x = x - 4;
-                y = 5.0f -(float)(i*.25);
+                y = 5.0f -(float)(i*.35);
                 colour = Color.yellow;
                 i++;
             }
 
             var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
-            newCube.GetComponent<CubeScript>().setSize(1.0f - perc);
-            newCube.GetComponent<CubeScript>().rotateSpeed = perc;
+            //newCube.GetComponent<CubeScript>().setSize(1.0f - perc);
+            newCube.GetComponent<CubeScript>().setSize(.5f);
+            //newCube.GetComponent<CubeScript>().rotateSpeed = perc;
+            newCube.GetComponent<CubeScript>().rotateSpeed = -.25f;
             newCube.GetComponentInChildren<TextMesh>().text = product.ProductName;
             //newCube.GetComponentInChildren<TextMesh>().transform.localPosition = new Vector3(x, y-3, z);
             newCube.GetComponent<Renderer>().material.color = colour;
