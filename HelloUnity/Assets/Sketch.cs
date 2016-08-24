@@ -26,8 +26,10 @@ public class Sketch : MonoBehaviour
         //----------------------
         //YOU WILL NEED TO DECLARE SOME VARIABLES HERE SIMILAR TO THE CREATIVE CODING TUTORIAL
         int totalCubes = 8;
-        int totalDistance = 5;
+        int totalDistance = 10;
         int i = 0;
+        int j = 0;
+        
         
 
         //for (int i = 0; i < totalCubes; i++)
@@ -53,17 +55,45 @@ public class Sketch : MonoBehaviour
             Debug.Log("This products name is: " + product.ProductName);
             //----------------------
             //YOUR CODE TO INSTANTIATE NEW PREFABS GOES HERE
-            float perc = i / (float)totalCubes;
+            /*float perc = i / (float)totalCubes;
 
-            float x = perc * totalDistance;
+            float x = perc * totalDistance;*/
+            float perc = 0.0f;
+            float x = -5.0f;
             float y = 5.0f;
             float z = 0.0f;
+            Color colour = Color.white;
+
+            
+
+            if (product.Manufacturer == "Abbas")
+            {
+                perc = j / (float)totalCubes;
+                x = perc * totalDistance;
+                x = x - 4;
+                y = 8.0f - (float)(j*.5);
+                colour = Color.green;
+                j++;
+            } else if (product.Manufacturer == "Fama")
+            {
+                perc = i / (float)totalCubes;
+                x = perc * totalDistance;
+                x = x - 4;
+                y = 5.0f -(float)(i*.25);
+                colour = Color.yellow;
+                i++;
+            }
 
             var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
             newCube.GetComponent<CubeScript>().setSize(1.0f - perc);
             newCube.GetComponent<CubeScript>().rotateSpeed = perc;
             newCube.GetComponentInChildren<TextMesh>().text = product.ProductName;
-            i++;
+            //newCube.GetComponentInChildren<TextMesh>().transform.localPosition = new Vector3(x, y-3, z);
+            newCube.GetComponent<Renderer>().material.color = colour;
+
+           
+
+            //i++;
 
             //----------------------
         }
